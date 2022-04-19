@@ -17,7 +17,7 @@ const loadAll = async () => {
                 <td>${info.email}</td>
                 <td>${Object.values(info.address)
                   .filter((value) => typeof value !== "object")
-                  .join(",")}</td>
+                  .join(", ")}</td>
               </tr>
       `;
     });
@@ -25,6 +25,13 @@ const loadAll = async () => {
     console.log(error);
   }
 };
+
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("input", function async(e) {
+  let query = e.target.value;
+  let selected = document.querySelector(".custom-select");
+  console.log(selected);
+});
 
 window.onload = () => {
   loadAll();
