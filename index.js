@@ -30,7 +30,7 @@ const searchInput = document.getElementById("search");
 searchInput.addEventListener("input", function async(e) {
   let query = e.target.value;
   let selected = document.querySelector(".custom-select");
-  console.log(selected);
+  console.log(selected.value);
 });
 
 window.onload = () => {
