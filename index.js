@@ -28,9 +28,20 @@ const loadAll = async () => {
 
 const searchInput = document.getElementById("search");
 searchInput.addEventListener("input", function async(e) {
-  let query = e.target.value;
-  let selected = document.querySelector(".custom-select");
-  console.log(selected.value);
+  try {
+    let query = e.target.value;
+    let selected = document.querySelector(".custom-select").value;
+    const response = await fetch(url);
+    const infos = await response.json();
+    console.log(infos);
+    const filtered = infos.filter(info => info[selected].toLowerCase().includes(query))
+    console.log(filtered)
+
+  } catch (error) {
+    console.log(error)
+  }
+  
+  
 });
 
 window.onload = () => {
