@@ -37,6 +37,9 @@ searchInput.addEventListener("input", async function (e) {
     const filtered = infos.filter((info) =>
       info[selected].toLowerCase().includes(query.toLowerCase())
     );
+    let tbody = document.querySelector("tbody");
+    tbody.innerHTML = "";
+
     filtered.forEach((info, index) => {
       tbody.innerHTML += `<tr>
                 <th scope="row">${index + 1} </th>
