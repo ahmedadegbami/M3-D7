@@ -57,6 +57,58 @@ searchInput.addEventListener("input", async function (e) {
   }
 });
 
+const btn1 = document.querySelector(".btn1");
+console.log(btn1);
+
+btn1.addEventListener("click", async (e) => {
+  const response = await fetch(url);
+  const infos = await response.json();
+  console.log(infos);
+  let sorted = infos.sort((a, b) =>
+    a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
+  );
+  let tbody = document.querySelector("tbody");
+  tbody.innerHTML = "";
+  sorted.forEach((info, index) => {
+    tbody.innerHTML += `<tr>
+                <th scope="row">${index + 1} </th>
+                <td>${info.name}</td>
+                <td>${info.username}</td>
+                <td>${info.email}</td>
+                <td>${Object.values(info.address)
+                  .filter((value) => typeof value !== "object")
+                  .join(", ")}</td>
+              </tr>
+      `;
+  });
+});
+
+const btn2 = document.querySelector(".btn2");
+console.log(btn2);
+
+btn2.addEventListener("click", async (e) => {
+  const response = await fetch(url);
+  const infos = await response.json();
+  console.log(infos);
+  let sorted = infos.sort((a, b) =>
+    a.name.toLowerCase() > b.name.toLowerCase() ? -1 : 1
+  );
+  let tbody = document.querySelector("tbody");
+  tbody.innerHTML = "";
+  sorted.forEach((info, index) => {
+    tbody.innerHTML += `<tr>
+                <th scope="row">${index + 1} </th>
+                <td>${info.name}</td>
+                <td>${info.username}</td>
+                <td>${info.email}</td>
+                <td>${Object.values(info.address)
+                  .filter((value) => typeof value !== "object")
+                  .join(", ")}</td>
+              </tr>
+      `;
+  });
+});
+
 window.onload = () => {
   loadAll();
 };
