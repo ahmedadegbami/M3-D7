@@ -37,7 +37,18 @@ searchInput.addEventListener("input", async function (e) {
     const filtered = infos.filter((info) =>
       info[selected].toLowerCase().includes(query.toLowerCase())
     );
-    console.log(filtered);
+    filtered.forEach((info, index) => {
+      tbody.innerHTML += `<tr>
+                <th scope="row">${index + 1} </th>
+                <td>${info.name}</td>
+                <td>${info.username}</td>
+                <td>${info.email}</td>
+                <td>${Object.values(info.address)
+                  .filter((value) => typeof value !== "object")
+                  .join(", ")}</td>
+              </tr>
+      `;
+    });
   } catch (error) {
     console.log(error);
   }
