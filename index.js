@@ -35,7 +35,7 @@ searchInput.addEventListener("input", async function (e) {
     const infos = await response.json();
     console.log(infos);
     const filtered = infos.filter((info) =>
-      info[selected].toLowerCase().includes(query)
+      info[selected].toLowerCase().includes(query.toLowerCase())
     );
     console.log(filtered);
   } catch (error) {
